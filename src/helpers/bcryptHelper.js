@@ -7,6 +7,16 @@ const hashPassword = (plainPassword) => {
   });
 };
 
+const comparePassword = (plainPassword, passFromDb) => {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(plainPassword, passFromDb, (err, result) => {
+      if (err) reject(err);
+      resolve(result);
+    });
+  });
+};
+
 module.exports = {
-    hashPassword
-}
+  hashPassword,
+  comparePassword,
+};

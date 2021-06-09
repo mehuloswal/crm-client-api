@@ -1,0 +1,21 @@
+
+### User signup endpoint
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+    "name": "Sangeeta Jitendra Oswal",
+    "company":"Home",
+    "address":"Pune",
+    "phone":1234567890,
+    "email":"sangeetaoswal28@gmail.com",
+    "password":"1234567890"
+}
+### User signin endpoint
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+    "email":"mehuloswal21@gmail.com",
+    "password":"12345678912"
+}
