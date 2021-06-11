@@ -24,13 +24,25 @@ const UserSchema = new Schema({
     type: String,
     maxlength: 50,
     required: true,
-    unique:true
+    unique: true,
   },
   password: {
     type: String,
     minlength: 8,
     maxlength: 100,
     required: true,
+  },
+  refreshJWT: {
+    token: {
+      type: String,
+      maxlenght: 500,
+      default: "",
+    },
+    addedAt: {
+      type: Date,
+      required: true,
+      default: Date.now(),
+    },
   },
 });
 
