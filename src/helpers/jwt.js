@@ -38,8 +38,18 @@ const verifyAccessJWT = (userJWT) => {
     return Promise.resolve(error);
   }
 };
+const verifyRefreshJWT = (userJWT) => {
+  try {
+    return Promise.resolve(
+      jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET_Refresh)
+    );
+  } catch (error) {
+    return Promise.resolve(error);
+  }
+};
 module.exports = {
   createAccessJWT,
   createRefreshJWT,
   verifyAccessJWT,
+  verifyRefreshJWT,
 };
