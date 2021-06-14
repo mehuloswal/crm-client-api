@@ -29,10 +29,17 @@ const createRefreshJWT = async (payload, _id) => {
   }
 };
 
-// JWT_ACCESS_SECRET_Access
-// JWT_ACCESS_SECRET_Refresh
-
+const verifyAccessJWT = (userJWT) => {
+  try {
+    return Promise.resolve(
+      jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET_Access)
+    );
+  } catch (error) {
+    return Promise.resolve(error);
+  }
+};
 module.exports = {
   createAccessJWT,
   createRefreshJWT,
+  verifyAccessJWT,
 };

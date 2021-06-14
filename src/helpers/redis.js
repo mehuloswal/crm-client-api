@@ -16,12 +16,12 @@ const setJWT = (key, value) => {
 const getJWT = (key) => {
   return new Promise((resolve, reject) => {
     try {
-      client.get("key", (err, res) => {
-        if (err) reject(err);
+      client.get(key, (error, res) => {
+        if (error) reject(error);
         resolve(res);
       });
     } catch (error) {
-      reject(err);
+      reject(error);
     }
   });
 };
