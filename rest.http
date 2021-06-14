@@ -29,3 +29,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwy
 ###Get refreshed token 
 GET http://localhost:3001/v1/tokens
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoibWVodWxvc3dhbDIxQGdtYWlsLmNvbSIsImlhdCI6MTYyMzY1OTEzMiwiZXhwIjoxNjI2MjUxMTMyfQ.-XRbv8tZTpnA5TlAqFDX9jHDwnyShgAkVEyV5v5FKj8
+
+
+###Reset Password
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+    "email":"mehuloswal21@gmail.com"
+    
+}

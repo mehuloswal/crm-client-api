@@ -9,6 +9,7 @@ const {
 const { hashPassword, comparePassword } = require("../helpers/bcryptHelper");
 const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt");
 const { userAuthorization } = require("../middlewares/authorization");
+const { setPasswordResetPin } = require("../model/resetPin/ResetPinModel");
 router.all("/", (req, res, next) => {
   //   res.json({ message: "return form user router" });
   next();
@@ -77,4 +78,22 @@ router.post("/login", async (req, res) => {
     refreshJWT,
   });
 });
+
+router.post("/reset-password", async (req, res) => {
+  const { email } = req.body;
+  const user = await getUserByEmail(email);
+
+  if (user && user._id) {
+    //creating unique pin
+    const setPin = await setPasswordResetPin(email);
+    return res.json(setPin);
+  }
+  res.json({
+    status: "error",
+    message:
+      "if the email exists in our database, the password reset pin will be sent shortly",
+  });
+});
+router.post("/reset-password", async (req, res) => {});
+
 module.exports = router;
