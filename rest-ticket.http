@@ -1,6 +1,7 @@
 
 POST http://localhost:3001/v1/ticket
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwyMUBnbWFpbC5jb20iLCJpYXQiOjE2MjM3NjM0NzMsImV4cCI6MTYyMzc2NDM3M30.aEdhtdgunvLp6nsDxgg3M4YIJu1Di9aFyJdHEJch37w
 
 {
     "subject": "Form Issue",
