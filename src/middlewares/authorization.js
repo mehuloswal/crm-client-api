@@ -9,7 +9,8 @@ const userAuthorization = async (req, res, next) => {
       message: "Please provide Auth Headers",
     });
   }
-  console.log(authorization);
+  // console.log(authorization);
+
   //1. verify if jwt is valid
   //2. check if jwt exist in redis
   const decoded = await verifyAccessJWT(authorization);
