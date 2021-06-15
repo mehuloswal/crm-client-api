@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
     "email":"mehuloswal21@gmail.com",
-    "password":"password3"
+    "password":"password"
 }
 ### Get a user profile endpoint
 GET http://localhost:3001/v1/user
@@ -46,6 +46,10 @@ Content-Type: application/json
 
 {
     "email":"mehuloswal21@gmail.com",
-    "pin" : 979176112, 
-    "newPassword":"password6"
+    "pin" : 979176, 
+    "newPassword":"password"
 }
+
+###user logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwyMUBnbWFpbC5jb20iLCJpYXQiOjE2MjM3NTU2NzAsImV4cCI6MTYyMzc1NjU3MH0.MwQhUOosibnCRzqPlw-yqM0H7xhDanmiNhNB1U3_M7I

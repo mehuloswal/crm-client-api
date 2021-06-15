@@ -6,6 +6,7 @@ const {
   getUserByEmail,
   getUserById,
   updatePassword,
+  storeUserRefreshJWT,
 } = require("../model/user/UserModel");
 const { hashPassword, comparePassword } = require("../helpers/bcryptHelper");
 const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt");
@@ -20,6 +21,8 @@ const {
   deletePin,
 } = require("../model/resetPin/ResetPinModel");
 const { emailProcessor } = require("../helpers/emailHelper");
+const { deleteJWT } = require("../helpers/redis");
+
 router.all("/", (req, res, next) => {
   //   res.json({ message: "return form user router" });
   next();
@@ -148,4 +151,17 @@ router.patch("/reset-password", updatePassValidation, async (req, res) => {
   res.json({ status: "error", message: "Unable to update your Password" });
 });
 
+router.delete("/logout", userAuthorization, async (req, res) => {
+  const { authorization } = req.headers;
+  const _id = req.userId;
+  deleteJWT(authorization);
+  const result = await storeUserRefreshJWT(_id, "");
+  if (result._id) {
+    return res.json({ status: "success", message: "Logged out successfully" });
+  }
+  res.json({
+    status: "error",
+    message: "Something went wrong! Try again later",
+  });
+});
 module.exports = router;
