@@ -3,6 +3,12 @@ const { getJWT, deleteJWT } = require("../helpers/redis");
 
 const userAuthorization = async (req, res, next) => {
   const { authorization } = req.headers;
+  if (!authorization) {
+    return res.json({
+      status: "error",
+      message: "Please provide Auth Headers",
+    });
+  }
   console.log(authorization);
   //1. verify if jwt is valid
   //2. check if jwt exist in redis
