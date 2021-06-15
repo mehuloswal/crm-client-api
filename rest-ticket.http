@@ -1,0 +1,9 @@
+
+POST http://localhost:3001/v1/ticket
+Content-Type: application/json
+
+{
+    "subject": "Form Issue",
+    "sender": "Mehul",
+    "message": "Contact form not working. Please fix as soon as possible"
+}
