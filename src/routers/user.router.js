@@ -35,7 +35,8 @@ router.get("/", userAuthorization, async (req, res) => {
   //4. get user profile
 
   const userProfile = await getUserById(_id);
-  res.json({ user: userProfile });
+  const { name, email } = userProfile;
+  res.json({ user: { _id, name, email } });
 });
 
 //create new user route
