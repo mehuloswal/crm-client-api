@@ -9,6 +9,7 @@ const newPassword = Joi.string().alphanum().min(3).max(30).required();
 const subject = Joi.string().min(2).max(100).required();
 const sender = Joi.string().min(2).max(50).required();
 const message = Joi.string().min(2).max(1000).required();
+const issueDate = Joi.date().required();
 
 const resetPassReqValidation = (req, res, next) => {
   const schema = Joi.object({ email });
@@ -28,7 +29,7 @@ const updatePassValidation = (req, res, next) => {
 };
 
 const createNewTicketValidation = (req, res, next) => {
-  const schema = Joi.object({ subject, sender, message });
+  const schema = Joi.object({ subject, sender, message, issueDate });
   const value = schema.validate(req.body);
   if (value.error) {
     return res.json({ status: "error", message: value.error.message });

@@ -26,14 +26,16 @@ router.post(
   userAuthorization,
   async (req, res) => {
     try {
-      const { subject, sender, message } = req.body;
+      const { subject, sender, message, issueDate } = req.body;
       const userId = req.userId;
       const ticketObj = {
         clientId: userId,
+        openedAt: issueDate,
         subject,
         conversations: [{ sender, message }],
       };
       const result = await insertTicket(ticketObj);
+      console.log(result);
 
       if (result._id) {
         return res.json({

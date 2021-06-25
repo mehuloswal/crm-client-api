@@ -1,55 +1,97 @@
-
-### User signup endpoint
+### User sing up endpoint
 POST http://localhost:3001/v1/user
 Content-Type: application/json
 
 {
-    "name": "Sangeeta Jitendra Oswal",
-    "company":"Home",
-    "address":"Pune",
-    "phone":1234567890,
-    "email":"sangeetaoswal28@gmail.com",
-    "password":"1234567890"
+    "name": "Prem Acharya",
+    "company": "Company name",
+    "address": "Some address Sydney",
+    "phone": "041000000",
+    "email": "e2@e.com1",
+    "password": "secret222"
 }
-### User signin endpoint
+### User sing in endpoint
 POST http://localhost:3001/v1/user/login
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-    "email":"mehuloswal21@gmail.com",
-    "password":"password"
+    "email": "e2@e.com",
+     "password": "password"   
 }
+
 ### Get a user profile endpoint
-GET http://localhost:3001/v1/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwyMUBnbWFpbC5jb20iLCJpYXQiOjE2MjM2NTU2MTIsImV4cCI6MTYyMzY1NjUxMn0.EuQw7ux2NsXGbk8iTOCO_qRPW2SYsALoiJVNe-Ksswg
+GET  http://localhost:3001/v1/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5MDQ5NzE0LCJleHAiOjE2MDkxMzYxMTR9.F8cp1zteSP9OZq8NXeirub8C-Gg81UQMYGJK-OSDAlA
 
 
-###Tokens Router
+###Token routers
 
-###Get refreshed token 
+### Get refreshed token
 GET http://localhost:3001/v1/tokens
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoibWVodWxvc3dhbDIxQGdtYWlsLmNvbSIsImlhdCI6MTYyMzY1OTEzMiwiZXhwIjoxNjI2MjUxMTMyfQ.-XRbv8tZTpnA5TlAqFDX9jHDwnyShgAkVEyV5v5FKj8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5NjY5NDcwLCJleHAiOjE2MTIyNjE0NzB9.C92NUOBb-MmyOx2Ipw-w-BjEafSuCot83Cwl3Bmr8Oc
 
 
-###Reset Password
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA0OTc0MTcyLCJleHAiOjE2MDQ5NzUwNzJ9.wvNH_c-yaWd05N6sPx3Y47AtJIIP9dXNCOIyVEjUO88
+
+
+#### Password reset request endpoints
 POST http://localhost:3001/v1/user/reset-password
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-    "email":"mehuloswal21@gmail.com"
+    "email": "e2@e.com"
 }
-
-###Update new Password endpoint
-
-PATCH http://localhost:3001/v1/user/reset-password
-Content-Type: application/json
+#### Update new password endpoint
+PATCH  http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
 
 {
-    "email":"mehuloswal21@gmail.com",
-    "pin" : 979176, 
-    "newPassword":"password"
+    "email": "e2@e.com",
+    "pin": "674783",
+    "newPassword": "password"
 }
 
-###user logout endpoint
+#### user logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwyMUBnbWFpbC5jb20iLCJpYXQiOjE2MjM3NjM0NzMsImV4cCI6MTYyMzc2NDM3M30.aEdhtdgunvLp6nsDxgg3M4YIJu1Di9aFyJdHEJch37w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5NjcyNzE0LCJleHAiOjE2MDk3NTkxMTR9.suW36ge23AtBke_-IG8gQOZEuUw_GxbqL177GzEmytM
+ 
+ 
+###Ticket apis
+
+ 
+### Open new ticket
+POST http://localhost:3001/v1/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHVsb3N3YWwyMUBnbWFpbC5jb20iLCJpYXQiOjE2MjQ2MDY2NzAsImV4cCI6MTYyNDYwNzU3MH0.tyYiyQzKoEUzjnx_eY8_pWJ-S134T9l46WE4WVH0CgA
+Content-Type: application/json 
+
+{
+ "subject": "Add new Ticket issue",
+  "sender": "Mehul",
+  "message": "Not working from frontend." 
+}
+
+###Get all the tickets
+GET http://localhost:3001/v1/ticket
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkyOTMxLCJleHAiOjE2MDk5NzkzMzF9.sPqRPk6nKGpS5tMK0uYIJv778CWBfyn3zm_Y9iTS4Iw
+
+### Get single ticket
+GET http://localhost:3001/v1/ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkxOTg0LCJleHAiOjE2MDk5NzgzODR9.7cUfpK_RF68a-xfxVXuet4PWVqwToUPyDXpupFlCQNI
+
+### Reply message to the ticket
+PUT http://localhost:3001/v1/ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkxOTg0LCJleHAiOjE2MDk5NzgzODR9.7cUfpK_RF68a-xfxVXuet4PWVqwToUPyDXpupFlCQNI
+Content-Type: application/json 
+
+{ 
+    "message": "this is the 222 reply", 
+    "sender": "Prem" 
+}
+
+### Close the ticket
+PATCH http://localhost:3001/v1/ticket/close-ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5OTA0NjQyLCJleHAiOjE2MDk5OTEwNDJ9.hRSVE-AFfMnsnxgCouqV_W2U5A2nfVLOBClPE59GGls
+
+### Delete the ticket
+DELETE  http://localhost:3001/v1/ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkxOTg0LCJleHAiOjE2MDk5NzgzODR9.7cUfpK_RF68a-xfxVXuet4PWVqwToUPyDXpupFlCQNI
