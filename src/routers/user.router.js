@@ -150,18 +150,15 @@ router.post("/reset-password", resetPassReqValidation, async (req, res) => {
       pin: setPin.pin,
       type: "request-new-password",
     });
-
     return res.json({
-      status: "Success",
-      message:
-        "if the email exists in our database, the password reset pin will be sent shortly",
+      status: "success",
+      message: " OTP will be sent shortly to your email.",
     });
   }
 
   res.json({
     status: "error",
-    message:
-      "if the email exists in our database, the password reset pin will be sent shortly",
+    message: "Not registered user. Register now.",
   });
 });
 
@@ -169,6 +166,7 @@ router.patch("/reset-password", updatePassValidation, async (req, res) => {
   const { email, pin, newPassword } = req.body;
   const getPin = await getPinByEmailPin(email, pin);
   if (getPin && getPin._id) {
+    //or getPin?._id is also same as that
     const dbDate = getPin.addedAt;
     let expDate = dbDate.setDate(dbDate.getDate() + 1);
     const today = new Date();
