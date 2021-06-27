@@ -27,7 +27,7 @@ const send = (info) => {
   });
 };
 
-const emailProcessor = ({ email, pin, type }) => {
+const emailProcessor = ({ email, pin, type, verificationLink }) => {
   switch (type) {
     case "request-new-password":
       const info = {
@@ -57,6 +57,19 @@ const emailProcessor = ({ email, pin, type }) => {
             <p>Your new Password has been updated</p>`, // html body
       };
       send(info2);
+      break;
+    case "new-user-confirmation":
+      const info3 = {
+        from: '"CRM by Mehul Oswal" <justina.walter70@ethereal.email>', // sender address
+        to: email, // list of receivers
+        subject: "Please Verify Your new User", // Subject line
+        text: "Please follow the link to verify your account before you can login",
+        // plain text body
+        html: `<b>Hello</b>
+            <p>Please follow the link to verify your account before you can login: </p> 
+            <p>${verificationLink}</p>`,
+      };
+      send(info3);
       break;
     default:
       break;
